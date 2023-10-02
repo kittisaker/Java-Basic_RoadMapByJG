@@ -1,4 +1,4 @@
-# Java-RoadMapByJG
+# Java Programming Language : Chapter 1 Getting Started
 
 ## 1. About the Java Technology
 * The Java Programming Language : characterized
