@@ -1,170 +1,37 @@
-# Java Programming Language : Chapter 4 Variables in Java - Local Variable, Class Variable and Instance Variable
+# Java Programming Language : Chapter 5 Primitive Data Types in Java
 
-## What is Variable in Java?
-* The value stored in a variable can be changed during program execution.
-* A variable is only a name given to a memory location, all the operations done on the variable effects that memory location.
-* In Java, all the variables must be declared before they can be used.
+In this chapter, we will discuss eight primitive types of data in Java such as byte, short, int, long, char, float, double, and boolean.
 
-## Declaring a Variable
+## 1. Integers
 
-```java
-type identifier [ = value ][, identifier [= value ] …];
+Java defines four integer types: byte, short, int, and long. All of these are signed, positive and negative values. Java does not support unsigned, positive-only integers.
 
-// type is one of Java’s atomic types or the name of a class or interface.
-// The identifier is the name of the variable.
-// We can initialize the variable by specifying an equal sign and a value.
-```
+### byte
+The smallest integer type is a byte. This is a signed 8-bit type that has a range from –128 to 127. Variables of type byte are especially useful when you’re working with a stream of data from a network or file. They are also useful when you’re working with raw binary data that may not be directly compatible with Java’s other built-in types.
 
-```java
-int a, b, c; // declares three ints, a, b, and c.
-int d = 3, e, f = 5; // declares three more ints, initializing d and f.
-byte z = 22; // initializes z.
-double pi = 3.14159; // declares an approximation of pi.
-char x = 'x'; // the variable x has the value 'x'.
-```
+### short
+short is a signed 16-bit type. It has a range from –32,768 to 32,767. It is probably the least-used Java type.
 
-## Java Different Kinds of Variables
+### int
+The most commonly used integer type is int. It is a signed 32-bit type that has a range from –2,147,483,648 to 2,147,483,647. In addition to other uses, variables of type int are commonly employed to control loops and to index arrays. Although you might think that using a byte or short would be more efficient than using an int in situations in which the larger range of an int is not needed, this may not be the case.
 
-### 1. Instance Variables (Non-Static Fields)
-Technically speaking, objects store their individual states in "non-static fields", that is, fields declared without the static keyword. Non-static fields are also known as instance variables because their values are unique to each instance of a class (to each object, in other words); the empName of one Employee is independent of the empName of another.
+### long
+long is a signed 64-bit type and is useful for those occasions where an int type is not large enough to hold the desired value. The range of a long is quite large. This makes it useful when big, whole numbers are needed. 
 
-```java
-package net.kope.corejava;
+## 2. Floating-Point Types
 
-public class InstanceVariableExapmle {
-    public static void main(String[] args) {
-        Employee employee = new Employee();
+### float
+The type float specifies a single-precision value that uses 32 bits of storage. Single precision is faster on some processors and takes half as much space as double-precision, but will become imprecise when the values are either very large or very small. Variables of type float are useful when you need a fractional component, but don’t require a large degree of precision.
 
-        // Before assigning values to employee object
-        System.out.println(employee.id);
-        System.out.println(employee.empName);
-        System.out.println(employee.age);
+### double
+Double precision, as denoted by the double keyword, uses 64 bits to store a value. Double precision is actually faster than single precision on some modern processors that have been optimized for high-speed mathematical calculations. 
+All transcendental math functions, such as sin( ), cos( ), and sqrt( ), return double values. When you need to maintain accuracy over many iterative calculations or are manipulating large-valued numbers, double is the best choice.
 
-        employee.id = 101;
-        employee.empName = "solo kope";
-        employee.age = 28;
+## 3. Characters
+In Java, the data type used to store characters is char. The char data type is a single 16-bit Unicode character. It has a minimum value of '\u0000' (or 0) and a maximum value of '\uffff' (or 65,535 inclusive).
 
-        // After assigning values to employee object
-        System.out.println(employee.id);
-        System.out.println(employee.empName);
-        System.out.println(employee.age);
-    }
-}
-
-class Employee{
-    // instance variable : employee id, employee name, employee age
-    public int id;
-    public String empName;
-    public int age;
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-0
-null
-0
-101
-solo kope
-28
-```
-
-</details>
-
-### 2. Class Variables (Static Fields)
-A class variable is any field declared with the static modifier; this tells the compiler that there is exactly one copy of this variable in existence, regardless of how many times the class has been instantiated.
-
-```java
-package net.kope.corejava.variables;
-
-public class StaticVariableExample {
-    public static void main(String[] args) {
-        Student student1 = new Student(100, "Student 1");
-        Student student2 = new Student(101, "Student 2");
-        Student student3 = new Student(102, "Student 3");
-        Student student4 = new Student(103, "Student 4");
-
-        System.out.println(" ------------ Student 1 -------------");
-        System.out.println(student1.toString());
-        System.out.println(student2.toString());
-        System.out.println(student3.toString());
-        System.out.println(student4.toString());
-    }
-}
-
-class Student{
-    private int rollNo;
-    private String name;
-    private static String college = "ABC"; // Static variable
-
-    public Student(int rollNo, String name) {
-        super();
-        this.rollNo = rollNo;
-        this.name = name;
-    }
-
-    @Override
-    public String toString(){
-        return "Student [rollNo=" + rollNo + ", name= " + name  + ", college=" + college + "]";
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
- ------------ Student 1 -------------
-Student [rollNo=100, name= Student 1, college=ABC]
-Student [rollNo=101, name= Student 2, college=ABC]
-Student [rollNo=102, name= Student 3, college=ABC]
-Student [rollNo=103, name= Student 4, college=ABC]
-```
-
-</details>
-
-### 3. Local Variables
-Similar to how an object stores its state in fields, a method will often store its temporary state in local variables. These variables are declared inside a method of the class. Their scope is limited to the method which means that You can’t change their values and access them outside of the method.
-
-```java
-package net.kope.corejava.variables;
-
-public class LocalVariableExample {
-    
-    public int sum(int n){
-        int sum = 0;
-        for(int i = 0; i < n; i++){
-            sum = sum + i;
-        }
-        return sum;
-    }
-
-    public static void main(String[] args) {
-        LocalVariableExample localVariableExample = new LocalVariableExample();
-        int sum = localVariableExample.sum(10);
-        System.out.println("Sum of first 10 numbers -> " + sum);
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-Sum of first 10 numbers -> 45
-```
-
-</details>
-
-### 4. Parameters
-Let's look at the signature for the main method is public static void main(String[] args). Here, the args variable is the parameter to this method. The important thing to remember is that parameters are always classified as "variables" not "fields".
-
-### Variables naming convention in java
-* Variables naming cannot contain white spaces.
-* A variable name can begin with special characters such as $ and _.
-* The variable name should start with a lowercase letter. Parameter names, member variable names, and local variable names should be written in lowerCamelCase.
-* Variable names are case sensitive in Java.
+## 4. Booleans
+Java has a primitive type, called boolean, for logical values. It can have only one of two possible values, true or false. This is the type returned by all relational operators, as in the case of a < b. 
+boolean is also the type required by the conditional expressions that govern the control statements such as if and for.
 
 ---
