@@ -1,4 +1,4 @@
-package net.kope.corejava.variables;
+package net.kope.corejava.operators.variables;
 
 public class StaticVariableExample {
     public static void main(String[] args) {
