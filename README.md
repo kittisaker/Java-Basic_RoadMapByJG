@@ -1,140 +1,18 @@
-# Java Programming Language : Chapter 8 Equality, Relational, and Conditional Operators in Java With Examples
+# Java Programming Language : Chapter 9 Java Access Modifiers - Public, Private, Protected & Default
 
-## 1. The Equality and Relational Operators
-The equality and relational operators determine if one operand is <b>greater than, less than, equal to,</b> or <b>not equal</b> to another operand. The majority of these operators will probably look familiar to you as well. Keep in mind that you must use "==", not "=", when testing if two primitive values are equal.
+## 1. Private Access Modifier
+A private class member cannot be accessed from outside the class; only members of the same class can access these private members.
+* A class cannot be a private except inner classes because inner classes are nothing but again members of the outer class. So members of a class (field, method, constructor, and inner class) can be private but not the class itself.
+* We can’t create subclasses to that class which has only private constructors.
 
-```java
-package net.kope.corejava.operators.equality;
+## 2. Default Access Modifier (no access modifier specified)
+When we do not mention any access modifier, it is called the default access modifier. The scope of this modifier is limited to the package only. This means that if we have a class with the default access modifier in a package, only those classes that are in this package can access this class. No other class outside this package can access this class. Similarly, if we have a default method or data member in a class, it would not be visible in the class of another package.
 
-public class ComparisonDemo {
-    public static void main(String[] args) {
-        int value1 = 1;
-        int value2 = 2;
-        if (value1 == value2)
-            System.out.println("value1 == value2");
-        if (value1 != value2)
-            System.out.println("value1 != value2");
-        if (value1 > value2)
-            System.out.println("value1 > value2");
-        if (value1 < value2)
-            System.out.println("value1 < value2");
-        if (value1 <= value2)
-            System.out.println("value1 <= value2");
-    }
-}
-```
+## 3. Protected Access Modifier
+If a class or its members are declared as protected are only accessible by the classes of the same package and the subclasses present in any package. You can also say that the protected access modifier is similar to the default access modifier with one exception that it has visibility in subclasses.
+Classes cannot be declared protected. This access modifier is generally used in a parent-child relationship.
 
-<details>
-<summary>Output : </summary>
-
-```shell
-value1 != value2
-value1 < value2
-value1 <= value2
-```
-
-</details>
-
-## 2. The Conditional Operators
-The && and || operators perform Conditional-AND and Conditional-OR operations on two boolean expressions. These operators exhibit "short-circuiting" behavior, which means that the second operand is evaluated only if needed.
-
-```java
-package net.kope.corejava.operators.condition;
-
-public class ConditionalDemo1 {
-    public static void main(String[] args) {
-        int value1 = 1;
-        int value2 = 2;
-        if ((value1 == 1) && (value2 == 2))
-            System.out.println("value1 is 1 AND value2 is 2");
-        if ((value1 == 1) || (value2 == 1))
-            System.out.println("value1 is 1 OR value2 is 1");
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-value1 is 1 AND value2 is 2
-value1 is 1 OR value2 is 1
-```
-
-</details>
-
-## 3. Ternary Operator
-Java includes a special ternary (three-way) operator that can replace certain types of if-then-else statements.
-
-```java
-package net.kope.corejava.operators.ternary;
-
-public class Ternary {
-    public static void main(String[] args) {
-        int i, k;
-
-        i = 10;
-        k = i < 0 ? -i : i; // get absolute value of i
-
-        System.out.print("Absolute value of ");
-        System.out.println(i + " is " + k);
-
-        i = -10;
-        k = i < 0 ? -i : i; // get absolute value of i
-
-        System.out.print("Absolute value of ");
-        System.out.println(i + " is " + k);
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-Absolute value of 10 is 10
-Absolute value of -10 is 10
-```
-
-</details>
-
-## 4. The Type Comparison Operator instanceof
-The instanceof operator compares an object to a specified type. You can use it to test if an object is an instance of a class, an instance of a subclass, or an instance of a class that implements a particular interface.
-
-```java
-package net.kope.corejava.operators.comparison;
-
-public class InstanceofDemo {
-    public static void main(String[] args) {
-        Parent obj1 = new Parent();
-        Parent obj2 = new Child();
-
-        System.out.println("obj1 instanceof Parent: " + (obj1 instanceof Parent));
-        System.out.println("obj1 instanceof Child: " + (obj1 instanceof Child));
-        System.out.println("obj1 instanceof MyInterface: " + (obj1 instanceof MyInterface));
-        System.out.println("obj2 instanceof Parent: " + (obj2 instanceof Parent));
-        System.out.println("obj2 instanceof Child: " + (obj2 instanceof Child));
-        System.out.println("obj2 instanceof MyInterface: " + (obj2 instanceof MyInterface));
-    }
-}
-
-class Parent {}
-class Child extends Parent implements MyInterface {}
-interface MyInterface {}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-obj1 instanceof Parent: true
-obj1 instanceof Child: false
-obj1 instanceof MyInterface: false
-obj2 instanceof Parent: true
-obj2 instanceof Child: true
-obj2 instanceof MyInterface: true
-```
-
-</details>
+## 4. Public Access Modifier
+If a class or its members are declared as public, they can be accessed from any other class regardless of the package boundary. It is comparable to a public place in the real world, such as a company cafeteria that all employees can use irrespective of their department.
 
 ---
