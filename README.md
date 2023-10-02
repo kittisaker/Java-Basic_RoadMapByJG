@@ -1,26 +1,12 @@
-# Java Programming Language : Chapter 1 Getting Started
+# Java Programming Language : Chapter 1 Java First Hello World Program
 
-## 1. About the Java Technology
-* The Java Programming Language : characterized
-    1. Simple
-    2. Object-oriented
-    3. Distributed
-    4. Multi-threaded
-    5. Dynamic
-    6. Architecture neutral
-    7. Portable
-    8. High performance
-    9. Robust
-    10. Secure
+## 1. Prerequisites
+* The Java SE Development Kit 8 (JDK 8)
+* A text editor
 
-* Java software development process:
-    1. MyProgram.java
-    2. Complier
-    3. MyProgram.class
-    4. Java VM
-    5. My Program
+## 2. Creating Your First Application
 
-### Step 1 : Create a Java Source File (HelloWorldApp.java)
+### 1. Create a Source File
 
 ```java
 public class HelloWorldApp {
@@ -30,48 +16,26 @@ public class HelloWorldApp {
 }
 ```
 
-### Step 2 : Compile Java Source File
+* class : keyword is used to declare a class in java.
+* public : keyword is an access modifier which represents visibility. It means it is visible to all.
+* static : is a keyword. If we declare any method as static, it is known as the static method. The core advantage of the static method is that there is no need to create an object to invoke the static method. The main method is executed by the JVM, so it doesn't require to create an object to invoke the main method. So it saves memory.
+* void : is the return type of the method. It means it doesn't return any value.
+* main : represents the starting point of the program.
+* String[] : args is used for command line argument. We will learn it later.
+* System.out.println() : is used print statement.
+
+## 2. Compile the Source File into a .class File
 
 ```shell
 javac HelloWorldApp.java
 ```
 
-### Step 3 : Execute ByteCodes ( .class File)
+
+## 3. Run the Program
 
 ```shell
-java HelloWorldApp
+$ java HelloWorldApp
+Hello World!
 ```
-
-## 2. Java Platform Independent
-* Write Once and Run Anywhere(WORA) :
-    * Comiler --> JVM --> Win32
-    * Comiler --> JVM --> UNIX
-    * Comiler --> JVM --> MacOS
-    * Etc.
-
-## 3. JVM Platform Dependent?
-As we know that JVM translates the byte-code into machine language, and since the machine language depends on the operating system being used, it is clear that the JVM is platform (operating system) dependent.
-
-## 4. The Java Platform
-
-The Java platform has two components:
-* The Java Virtual Machine
-* The Java Application Programming Interface (API)
-
-## 5. What Can Java Technology Do?
-* Development Tools
-* Application Programming Interface (API)
-* Deployment Technologies
-* User Interface Toolkits
-* Integration Libraries
-
-## 6. How Will Java Technology Change My Life?
-* Get started quickly
-* Write less code
-* Write better code
-* Develop programs more quickly
-* Avoid platform dependencies
-* Write once, run anywhere
-* Distribute software more easily
 
 ---
