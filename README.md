@@ -55,8 +55,8 @@ As we know that JVM translates the byte-code into machine language, and since th
 ## 4. The Java Platform
 
 The Java platform has two components:
-    1. The Java Virtual Machine
-    2. The Java Application Programming Interface (API)
+* The Java Virtual Machine
+* The Java Application Programming Interface (API)
 
 ## 5. What Can Java Technology Do?
 * Development Tools
