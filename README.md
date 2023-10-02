@@ -1,41 +1,22 @@
-# Java Programming Language : Chapter 1 Java First Hello World Program
+# Java Programming Language : Chapter 1 What is JDK, JRE and JVM in Java
 
-## 1. Prerequisites
-* The Java SE Development Kit 8 (JDK 8)
-* A text editor
+## 1. JDK(Java Development Kit)
+The JDK(Java Development Kit) is a superset of the JRE and contains everything that is in the JRE, plus tools such as the compiler, debugger, JavaDoc, keytool etc necessary for developing and running Java programs or applications.
 
-## 2. Creating Your First Application
+## 2. JVM (Java Virtual Machine)
+JVM is a very important component of Java programming language. When you run the Java program, the Java compiler first compiles your Java code to bytecode. Then, the JVM translates bytecode into native machine code (set of instructions that a computer's CPU executes directly).
 
-### 1. Create a Source File
+## 3. JRE(Java Runtime Environment)
+The Java Runtime Environment (JRE) provides the libraries, the Java Virtual Machine, and other components to run applets and applications written in the Java programming language.
 
-```java
-public class HelloWorldApp {
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
-    }
-}
-```
+JRE doesn’t contain any development tools such as Java compiler, debugger, JShell, etc.
 
-* class : keyword is used to declare a class in java.
-* public : keyword is an access modifier which represents visibility. It means it is visible to all.
-* static : is a keyword. If we declare any method as static, it is known as the static method. The core advantage of the static method is that there is no need to create an object to invoke the static method. The main method is executed by the JVM, so it doesn't require to create an object to invoke the main method. So it saves memory.
-* void : is the return type of the method. It means it doesn't return any value.
-* main : represents the starting point of the program.
-* String[] : args is used for command line argument. We will learn it later.
-* System.out.println() : is used print statement.
+If you just want to execute a java program, you can install only JRE. You don’t need JDK because there is no development or compilation of java source code is required.
 
-## 2. Compile the Source File into a .class File
-
-```shell
-javac HelloWorldApp.java
-```
-
-
-## 3. Run the Program
-
-```shell
-$ java HelloWorldApp
-Hello World!
-```
+## 4. JDK vs JRE vs JVM
+Let’s look at some of the important differences between JDK, JRE, and JVM.
+    * JDK is for development purposes whereas JRE is for running the java programs.
+    * JDK and JRE both contain JVM so that we can run our java program.
+    * JVM is the heart of Java programming language and provides platform independence.
 
 ---
