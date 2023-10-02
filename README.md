@@ -149,6 +149,15 @@ public class LocalVariableExample {
 }
 ```
 
+<details>
+<summary>Output : </summary>
+
+```shell
+Sum of first 10 numbers -> 45
+```
+
+</details>
+
 ### 4. Parameters
 Let's look at the signature for the main method is public static void main(String[] args). Here, the args variable is the parameter to this method. The important thing to remember is that parameters are always classified as "variables" not "fields".
 
@@ -156,6 +165,6 @@ Let's look at the signature for the main method is public static void main(Strin
 * Variables naming cannot contain white spaces.
 * A variable name can begin with special characters such as $ and _.
 * The variable name should start with a lowercase letter. Parameter names, member variable names, and local variable names should be written in lowerCamelCase.
-    4. Variable names are case sensitive in Java.
+* Variable names are case sensitive in Java.
 
 ---
