@@ -1,29 +1,78 @@
-# Java Programming Language : Chapter 13 Java do while Loop
+# Java Programming Language : Chapter 14 Java Switch Case Statement
 
-## 1. do-while Loop Syntax
-
+* Syntax
 ```java
-do {
-    // body of a loop
-} while (condition);
+switch (expression) {
+    case value1:
+        // statement sequence
+        break;
+    case value2:
+        // statement sequence
+        break;
+        .
+        .
+        .
+        case valueN:
+            // statement sequence
+            break;
+    default:
+        // default statement sequence
+}
 ```
 
-Each iteration of the do-while loop first executes the body of the loop and then evaluates the conditional expression. If this expression is true, the loop will repeat. Otherwise, the loop terminates. As with all of Java’s loops, a condition must be a Boolean expression.
+The switch statement works like this: The value of the expression is compared with each of the values in the case statements. If a match is found, the code sequence following that case statement is executed. If none of the constants match the value of the expression, then the default statement is executed. However, the default statement is optional. If no case matches and no default is present, then no further action is taken.
 
-## 2. How do-while Loop Works?
-First, the statements inside the loop execute and then the condition gets evaluated, if the condition returns true then the control gets transferred to the “do” else it jumps to the next statement after do-while.
-
-## 3. Simple do-while Loop Example
+## 1. Java switch case Simple Example
 
 ```java
-public class DoWhileLoopExample {
+public class SwitchDemo {
     public static void main(String[] args) {
-        int n = 10;
+        int month = 8;
+        String monthString;
 
-        do{
-            System.out.println("tick " +n);
-            n--;
-        }while(n > 0);
+        switch (month) {
+            case 1:
+                monthString = "January";
+                break;
+            case 2:
+                monthString = "February";
+                break;
+            case 3:
+                monthString = "March";
+                break;
+            case 4:
+                monthString = "April";
+                break;
+            case 5:
+                monthString = "May";
+                break;
+            case 6:
+                monthString = "June";
+                break;
+            case 7:
+                monthString = "July";
+                break;
+            case 8:
+                monthString = "August";
+                break;
+            case 9:
+                monthString = "September";
+                break;
+            case 10:
+                monthString = "October";
+                break;
+            case 11:
+                monthString = "November";
+                break;
+            case 12:
+                monthString = "December";
+                break;
+            default:
+                monthString = "Invalid month";
+                break;
+        }
+        
+        System.out.println(monthString);
     }
 }
 ```
@@ -32,69 +81,77 @@ public class DoWhileLoopExample {
 <summary>Output : </summary>
 
 ```shell
-tick 10
-tick 9
-tick 8
-tick 7
-tick 6
-tick 5
-tick 4
-tick 3
-tick 2
-tick 1
+August
 ```
 </details>
 
-## 3. do-while Loop with Menu Selection Example
-
-The do-while loop is especially useful when you process a menu selection because you will usually want the body of a menu loop to execute at least once.
+## 2. Java switch Statement with Break (break statements are optional)
 
 ```java
-public class DoWhileMenuExample {
-    public static void main(String args[]) throws java.io.IOException {
-        char choice;
-        do {
-            System.out.println("Help on: ");
-            System.out.println(" 1. if");
-            System.out.println(" 2. switch");
-            System.out.println(" 3. while");
-            System.out.println(" 4. do-while");
-            System.out.println(" 5. for\n");
-            System.out.println("Choose one:");
-            choice = (char) System.in.read();
-        } while (choice < '1' || choice > '5');
+public class MissingBreak {
+    public static void main(String[] args) {
+        for(int i = 0; i < 12; i++){
+            switch(i){
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                    System.out.println("i is less than 5");
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    System.out.println("i is less than 10");
+                    break;
+                default:
+                    System.out.println("i is 10 or more");
+            }
+        }
+    }
+}
+```
 
-        System.out.println("\n");
-        
-        switch (choice) {
-            case '1':
-                System.out.println("The if:\n");
-                System.out.println("if(condition) statement;");
-                System.out.println("else statement;");
+<details>
+<summary>Output : </summary>
+
+```shell
+i is less than 5
+i is less than 5
+i is less than 5
+i is less than 5
+i is less than 5
+i is less than 10
+i is less than 10
+i is less than 10
+i is less than 10
+i is less than 10
+i is 10 or more
+i is 10 or more
+```
+</details>
+
+## 3. Java switch Statement with String
+
+```java
+public class StringsSwitch {
+    public static void main(String[] args) {
+        String str = "two";
+
+        switch (str) {
+            case "one":
+                System.out.println("one");
                 break;
-            case '2':
-                System.out.println("The switch:\n");
-                System.out.println("switch(expression) {");
-                System.out.println(" case constant:");
-                System.out.println(" statement sequence");
-                System.out.println(" break;");
-                System.out.println(" //...");
-                System.out.println("}");
+            case "two":
+                System.out.println("two");
                 break;
-            case '3':
-                System.out.println("The while:\n");
-                System.out.println("while(condition) statement;");
+            case "three":
+                System.out.println("three");
                 break;
-            case '4':
-                System.out.println("The do-while:\n");
-                System.out.println("do {");
-                System.out.println(" statement;");
-                System.out.println("} while (condition);");
-                break;
-            case '5':
-                System.out.println("The for:\n");
-                System.out.print("for(init; condition; iteration)");
-                System.out.println(" statement;");
+            default:
+                System.out.println("no match");
                 break;
         }
     }
@@ -105,21 +162,69 @@ public class DoWhileMenuExample {
 <summary>Output : </summary>
 
 ```shell
-Help on: 
- 1. if
- 2. switch
- 3. while
- 4. do-while
- 5. for
-
-Choose one:
-5
-
-
-The for:
-
-for(init; condition; iteration) statement;
+two
 ```
 </details>
+
+## 4. Java switch Statement with Enum
+
+```java
+public class EnumInSwitchStatement {
+
+    enum Days{
+        SUNDAY,
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY;
+    }
+
+    public static String enumInSwitch(Days day){
+        switch (day) {
+            case SUNDAY:
+                return "Its Sunday!!";
+            case MONDAY:
+                return "Its Monday";
+            case TUESDAY:
+                return "Its Tuesday";
+            case WEDNESDAY:
+                return "Its Wednesday";
+            default:
+                return "Rest of the week....";
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(enumInSwitch(Days.SUNDAY));
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Its Sunday!!
+```
+</details>
+
+## 5. Java Nested switch Statements
+
+```java
+switch (count) {
+    case 1:
+        switch (target) { // nested switch
+            case 0:
+                System.out.println("target is zero");
+                break;
+            case 1: // no conflicts with outer switch
+                System.out.println("target is one");
+                break;
+        }
+        break;
+    case 2: // ...
+```
 
 ---
