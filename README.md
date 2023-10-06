@@ -50,26 +50,6 @@ tick 1
 The do-while loop is especially useful when you process a menu selection because you will usually want the body of a menu loop to execute at least once.
 
 ```java
-Help on: 
- 1. if
- 2. switch
- 3. while
- 4. do-while
- 5. for
-
-Choose one:
-5
-
-
-The for:
-
-for(init; condition; iteration) statement;
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
 public class DoWhileMenuExample {
     public static void main(String args[]) throws java.io.IOException {
         char choice;
@@ -119,6 +99,26 @@ public class DoWhileMenuExample {
         }
     }
 }
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Help on: 
+ 1. if
+ 2. switch
+ 3. while
+ 4. do-while
+ 5. for
+
+Choose one:
+5
+
+
+The for:
+
+for(init; condition; iteration) statement;
 ```
 </details>
 
