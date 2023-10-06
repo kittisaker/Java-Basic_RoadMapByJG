@@ -1,78 +1,127 @@
-# Java Programming Language : Chapter 14 Java Switch Case Statement
+# Java Programming Language : Chapter 15 Java break Statement
 
-* Syntax
+## 1. Using a break to Exit a for Loop
+
 ```java
-switch (expression) {
-    case value1:
-        // statement sequence
-        break;
-    case value2:
-        // statement sequence
-        break;
-        .
-        .
-        .
-        case valueN:
-            // statement sequence
-            break;
-    default:
-        // default statement sequence
+public class BreakWithForLoop {
+    public static void main(String[] args) {
+        for(int i = 0; i < 100; i++){
+            if(i == 10){
+                break;
+            }
+            System.out.println("i : " + i);
+        }
+        System.out.println("Loop complete");
+    }
 }
 ```
 
-The switch statement works like this: The value of the expression is compared with each of the values in the case statements. If a match is found, the code sequence following that case statement is executed. If none of the constants match the value of the expression, then the default statement is executed. However, the default statement is optional. If no case matches and no default is present, then no further action is taken.
+<details>
+<summary>Output : </summary>
 
-## 1. Java switch case Simple Example
+```shell
+i : 0
+i : 1
+i : 2
+i : 3
+i : 4
+i : 5
+i : 6
+i : 7
+i : 8
+i : 9
+Loop complete
+```
+</details>
+
+## 2. Using break to Exit a while Loop
 
 ```java
-public class SwitchDemo {
+public class BreakWithWhileLoop {
     public static void main(String[] args) {
-        int month = 8;
-        String monthString;
+        int i = 0;
 
-        switch (month) {
+        while (i < 100) {
+            if(i == 10){
+                break;
+            }
+            System.out.println("i : " +i);
+            i++;
+        }
+        System.out.println("Loop complete.");
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+i : 0
+i : 1
+i : 2
+i : 3
+i : 4
+i : 5
+i : 6
+i : 7
+i : 8
+i : 9
+Loop complete.
+```
+</details>
+
+## 3. Using break with Nested Loops
+
+```java
+public class BreakWithNestedLoops {
+    public static void main(String[] args) {
+        for(int i = 0; i < 3; i++){
+            System.out.print("Pass " +i+ " : ");
+            for(int j = 0; j < 100; j++){
+                if(j == 10){
+                    break;
+                }
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Loops complete.");
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+Pass 0 : 0 1 2 3 4 5 6 7 8 9 
+Pass 1 : 0 1 2 3 4 5 6 7 8 9
+Pass 2 : 0 1 2 3 4 5 6 7 8 9
+Loops complete.
+```
+</details>
+
+## 4. Using break with a switch case Statement
+
+```java
+public class BreakSwitchCaseExample {
+    public static void main(String[] args) {
+        int num = 2;
+
+        switch(num){
             case 1:
-                monthString = "January";
+                System.out.println("Case 1 ");
                 break;
             case 2:
-                monthString = "February";
+                System.out.println("Case 2 ");
                 break;
             case 3:
-                monthString = "March";
-                break;
-            case 4:
-                monthString = "April";
-                break;
-            case 5:
-                monthString = "May";
-                break;
-            case 6:
-                monthString = "June";
-                break;
-            case 7:
-                monthString = "July";
-                break;
-            case 8:
-                monthString = "August";
-                break;
-            case 9:
-                monthString = "September";
-                break;
-            case 10:
-                monthString = "October";
-                break;
-            case 11:
-                monthString = "November";
-                break;
-            case 12:
-                monthString = "December";
+                System.out.println("Case 3 ");
                 break;
             default:
-                monthString = "Invalid month";
-                break;
+                System.out.println("Default ");
         }
-        
-        System.out.println(monthString);
     }
 }
 ```
@@ -81,34 +130,30 @@ public class SwitchDemo {
 <summary>Output : </summary>
 
 ```shell
-August
+Case 2 
 ```
 </details>
 
-## 2. Java switch Statement with Break (break statements are optional)
+
+## 5. Using break as a Civilized Form of goto
 
 ```java
-public class MissingBreak {
+public class BreakGoto {
     public static void main(String[] args) {
-        for(int i = 0; i < 12; i++){
-            switch(i){
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                case 4:
-                    System.out.println("i is less than 5");
-                    break;
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                    System.out.println("i is less than 10");
-                    break;
-                default:
-                    System.out.println("i is 10 or more");
+        boolean t = true;
+
+        first:{
+            second:{
+                third:{
+                    System.out.println("Befor the break.");
+                    if(t){
+                        break second;
+                    }
+                    System.out.println("This won't execute");
+                }
+                System.out.println("This won't execute");
             }
+            System.out.println("This is after second block.");
         }
     }
 }
@@ -118,113 +163,9 @@ public class MissingBreak {
 <summary>Output : </summary>
 
 ```shell
-i is less than 5
-i is less than 5
-i is less than 5
-i is less than 5
-i is less than 5
-i is less than 10
-i is less than 10
-i is less than 10
-i is less than 10
-i is less than 10
-i is 10 or more
-i is 10 or more
+Befor the break.
+This is after second block.
 ```
 </details>
-
-## 3. Java switch Statement with String
-
-```java
-public class StringsSwitch {
-    public static void main(String[] args) {
-        String str = "two";
-
-        switch (str) {
-            case "one":
-                System.out.println("one");
-                break;
-            case "two":
-                System.out.println("two");
-                break;
-            case "three":
-                System.out.println("three");
-                break;
-            default:
-                System.out.println("no match");
-                break;
-        }
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-two
-```
-</details>
-
-## 4. Java switch Statement with Enum
-
-```java
-public class EnumInSwitchStatement {
-
-    enum Days{
-        SUNDAY,
-        MONDAY,
-        TUESDAY,
-        WEDNESDAY,
-        THURSDAY,
-        FRIDAY,
-        SATURDAY;
-    }
-
-    public static String enumInSwitch(Days day){
-        switch (day) {
-            case SUNDAY:
-                return "Its Sunday!!";
-            case MONDAY:
-                return "Its Monday";
-            case TUESDAY:
-                return "Its Tuesday";
-            case WEDNESDAY:
-                return "Its Wednesday";
-            default:
-                return "Rest of the week....";
-        }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(enumInSwitch(Days.SUNDAY));
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-Its Sunday!!
-```
-</details>
-
-## 5. Java Nested switch Statements
-
-```java
-switch (count) {
-    case 1:
-        switch (target) { // nested switch
-            case 0:
-                System.out.println("target is zero");
-                break;
-            case 1: // no conflicts with outer switch
-                System.out.println("target is one");
-                break;
-        }
-        break;
-    case 2: // ...
-```
 
 ---
