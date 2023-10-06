@@ -1,17 +1,22 @@
-# Java Programming Language : Chapter 15 Java break Statement
+# Java Programming Language : Chapter 16 Java continue Statement
 
-## 1. Using a break to Exit a for Loop
+## 1. Flow Diagram of a continue Statement
+The continue statement skips the current iteration of a for, while or do-while loop. The unlabeled form skips to the end of the innermost loop's body and evaluates the boolean expression that controls the loop.
+
+## 2. continue Statement Inside for Loop Example
 
 ```java
-public class BreakWithForLoop {
+public class ContinueExample {
     public static void main(String[] args) {
-        for(int i = 0; i < 100; i++){
-            if(i == 10){
-                break;
+        for(int i = 0; i < 10; i++){
+            System.out.print(i + " ");
+
+            if(i % 2 == 0){
+                continue;
             }
-            System.out.println("i : " + i);
+
+            System.out.println("");
         }
-        System.out.println("Loop complete");
     }
 }
 ```
@@ -20,35 +25,31 @@ public class BreakWithForLoop {
 <summary>Output : </summary>
 
 ```shell
-i : 0
-i : 1
-i : 2
-i : 3
-i : 4
-i : 5
-i : 6
-i : 7
-i : 8
-i : 9
-Loop complete
+0 1  
+2 3
+4 5
+6 7
 ```
 </details>
 
-## 2. Using break to Exit a while Loop
+
+## 3. Using continue Statement in while Loop Example
 
 ```java
-public class BreakWithWhileLoop {
+public class ContinueExample {
     public static void main(String[] args) {
-        int i = 0;
+        int count = 10;
 
-        while (i < 100) {
-            if(i == 10){
-                break;
+        while (count >= 0) {
+
+            if(count == 7){
+                count--;
+                continue;
             }
-            System.out.println("i : " +i);
-            i++;
+
+            System.out.println(count + " ");
+            count--;
         }
-        System.out.println("Loop complete.");
     }
 }
 ```
@@ -57,36 +58,61 @@ public class BreakWithWhileLoop {
 <summary>Output : </summary>
 
 ```shell
-i : 0
-i : 1
-i : 2
-i : 3
-i : 4
-i : 5
-i : 6
-i : 7
-i : 8
-i : 9
-Loop complete.
+10 
+9 
+8 
+6 
+5 
+4 
+3
+2
+1
+0
 ```
 </details>
 
-## 3. Using break with Nested Loops
+## 4. Using continue Statement in do-while Loop Example
 
 ```java
-public class BreakWithNestedLoops {
+public class ContinueExample {
     public static void main(String[] args) {
-        for(int i = 0; i < 3; i++){
-            System.out.print("Pass " +i+ " : ");
-            for(int j = 0; j < 100; j++){
-                if(j == 10){
-                    break;
+        int j = 0;
+
+        do{
+            if(j == 7){
+                j++;
+                continue;
+            }
+            System.out.print(j + " ");
+            j++;
+        }while(j < 10);
+    }
+}
+```
+
+<details>
+<summary>Output : </summary>
+
+```shell
+0 1 2 3 4 5 6 8 9
+```
+</details>
+
+## 5. Using continue Statement with Labeled for Loop
+
+```java
+public class ContinueLabel {
+    public static void main(String[] args) {
+        outer: for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if(j > i){
+                    System.out.println();
+                    continue outer;
                 }
-                System.out.print(j + " ");
+                System.out.print(" " + (i * j));
             }
-            System.out.println();
         }
-        System.out.println("Loops complete.");
+        System.out.println("End loop");
     }
 }
 ```
@@ -95,76 +121,16 @@ public class BreakWithNestedLoops {
 <summary>Output : </summary>
 
 ```shell
-Pass 0 : 0 1 2 3 4 5 6 7 8 9 
-Pass 1 : 0 1 2 3 4 5 6 7 8 9
-Pass 2 : 0 1 2 3 4 5 6 7 8 9
-Loops complete.
-```
-</details>
-
-## 4. Using break with a switch case Statement
-
-```java
-public class BreakSwitchCaseExample {
-    public static void main(String[] args) {
-        int num = 2;
-
-        switch(num){
-            case 1:
-                System.out.println("Case 1 ");
-                break;
-            case 2:
-                System.out.println("Case 2 ");
-                break;
-            case 3:
-                System.out.println("Case 3 ");
-                break;
-            default:
-                System.out.println("Default ");
-        }
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-Case 2 
-```
-</details>
-
-
-## 5. Using break as a Civilized Form of goto
-
-```java
-public class BreakGoto {
-    public static void main(String[] args) {
-        boolean t = true;
-
-        first:{
-            second:{
-                third:{
-                    System.out.println("Befor the break.");
-                    if(t){
-                        break second;
-                    }
-                    System.out.println("This won't execute");
-                }
-                System.out.println("This won't execute");
-            }
-            System.out.println("This is after second block.");
-        }
-    }
-}
-```
-
-<details>
-<summary>Output : </summary>
-
-```shell
-Befor the break.
-This is after second block.
+0
+ 0 1
+ 0 2 4
+ 0 3 6 9
+ 0 4 8 12 16
+ 0 5 10 15 20 25
+ 0 6 12 18 24 30 36
+ 0 7 14 21 28 35 42 49
+ 0 8 16 24 32 40 48 56 64
+ 0 9 18 27 36 45 54 63 72 81End loop
 ```
 </details>
 
